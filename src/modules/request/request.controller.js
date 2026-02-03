@@ -17,7 +17,7 @@ export const createRequest = AsyncHandler(async (req, res, next) => {
     //Clearing Data in Cash
     const keys = await redisClient.keys('requests:*');
     if (keys.length > 0) await redisClient.del(keys);
-;
+
     matchRequestWithOffers(newRequest);
 
     res.status(201).json({ status: "success", msg: "Your application has been successfully registered", data: newRequest });

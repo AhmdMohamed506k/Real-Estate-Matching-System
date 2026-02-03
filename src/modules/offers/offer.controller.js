@@ -26,6 +26,8 @@ export const getAllOffers = AsyncHandler(async (req, res, next) => {
     // Caching Offers
     const cacheKey = `offers:${JSON.stringify(req.query)}`;
 
+
+    
     // Check if Data Exist
     const cachedData = await redisClient.get(cacheKey);
     if (cachedData) return res.status(200).json({ status: "success", source: "cache", data: JSON.parse(cachedData) });
